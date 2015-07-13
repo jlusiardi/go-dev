@@ -1,0 +1,24 @@
+#
+# Copyright 2015 1&1 Internet AG, http://1und1.de . All rights reserved. Licensed under the Apache v2 License.
+#
+
+function promptFunction() {
+	let fillsize=${COLUMNS:-$(tput cols)}-30
+	replacement=`printf '%*s' "$fillsize" | tr ' ' '#'`
+	date=`date`
+	path=`pwd`
+	if [ -z "`git status 2> /dev/null`" ]
+	then
+		git="no repo"
+	else 
+		ahead="`git rev-list HEAD --not --remotes --count 2> /dev/null ` commit(s) ahead"
+		branch=`git rev-parse --abbrev-ref HEAD 2> /dev/null`
+		git="$branch, $ahead"
+	fi
+	PS1="$(tput bold)$(tput setaf 3)$date $replacement$(tput setaf 7)\n"
+	PS1="$PS1$(tput setaf 1)\w$(tput setaf 7) ($(tput setaf 4)$git$(tput setaf 7))\n"
+	PS1="$PS1$(tput setaf 2)-->$(tput setaf 7) "
+}
+
+export PROMPT_COMMAND=promptFunction
+
