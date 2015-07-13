@@ -58,6 +58,8 @@ COPY inputrc /etc/inputrc
 # make bash nicer
 COPY bash_customize $HOME/.bash_customize
 RUN \
+	curl https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash > $HOME/.git-completion.bash; \
+	echo "source $HOME/.git-completion.bash" >> $HOME/.bashrc; \
 	echo "source $HOME/.bash_customize" >> $HOME/.bashrc
 
 USER godev
