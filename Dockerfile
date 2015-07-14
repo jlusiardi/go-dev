@@ -52,6 +52,10 @@ RUN \
 	cp -a /tmp/neocomplete/autoload/* $HOME/.vim/autoload ; \
 	cp -a /tmp/neocomplete/plugin/* $HOME/.vim/plugin
 
+# install numbers.vim
+RUN \
+	git clone https://github.com/myusuf3/numbers.vim.git $HOME/.vim/bundle/numbers
+
 # add custom inputrc
 COPY inputrc /etc/inputrc
 
