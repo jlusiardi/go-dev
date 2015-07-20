@@ -6,11 +6,12 @@ Use `docker run` to start the development environment:
 
 ```docker pull jlusiardi/go-dev```
 
-```docker run -t -i --rm -v $HOME/go:/home/godev/go jlusiardi/go-dev```
+```docker run -t -i --rm -p 6060:6060 -v $HOME/go:/home/godev/go jlusiardi/go-dev```
 
 
 You can use the following tools:
-
+ 
+ - go doc is running and is accessible via http://localhost:6060 in your browser
  - vim with plugins
    - pathogen (https://github.com/tpope/vim-pathogen)
    - vim-go (https://github.com/fatih/vim-go)

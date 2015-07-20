@@ -71,3 +71,6 @@ USER godev
 VOLUME ["/home/godev/go"]
 
 WORKDIR /home/godev/go/src
+EXPOSE 6060
+COPY start.sh /start.sh
+CMD /start.sh
